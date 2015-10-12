@@ -1,11 +1,11 @@
-# Software-Defined-Storage-Doc
+# Dockers-Micro-Services-Doc
 
 Documentation
 
 Please follow the directory structure as shown below
 
 ```
-  Software-Defined-Storage-Doc
+  Dockers-Micro-Services-Doc
     - Raw
       - Week1-Chameleon-Ceph-Deployment
         - Version-1
