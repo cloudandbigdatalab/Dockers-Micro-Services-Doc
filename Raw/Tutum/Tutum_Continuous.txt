@@ -1,0 +1,76 @@
+Pre-Requisites
+
+1.	Tutum Account
+
+2.	Chameleon Cloud does not have a Lease/Link/Tie-up with Tutum. So we should bring our container node into tutum, by going into nodes menu,and then following these steps:
+	1.	Go to node dashboard
+	2.	Click bring your own node
+	3.	Copy the code in the popup page
+	4.	SSH in to your instance using your Private key
+	5.	Run the copied code from step 3 into the Instances Terminal and press enter
+	6.	Tutum is now installed in your KVM Instance
+	
+3.	Now we need to create the Repository. 
+	If you want to link your github account to TUTUM, go to your account info and select </> Source Providers and add your GitHub account into it. 
+	
+	Once you are ready to create a repository, do the following steps:
+	1.	Choose Create new repository
+	2.	Give a repository name and an optional description and press Create
+	3.	Press Edit to change the Repository parameters. 
+	
+
+	
+
+	
+	
+	Shawns TUTORIAL in Tutum
+	
+	
+	The problem:
+	
+		No Dockerfile in root directory.
+	The fix:
+		You should make 3 seperate repositories in your TUTUM account and name them nginx, postgres, uwsgi respectively.
+		
+		Now, follow the steps:
+		1.	Log in to tutum CLI, our container in KVM
+		2.	git clone https://github.com/arundasan91/tutorial-cham-docker-1.git
+		3.	sudo cp -a /home/cc/tutorial-cham-docker-1/. /home/cc/
+		4.	sudo docker build nginx
+		5.	sudo docker tag <imagenameofnginx> tutum.co/arundas/nginx:nginx
+		6.	sudo docker build postgres 
+		7.	sudo docker tag <imagenameofpostgres> tutum.co/arundas/postgres:postgres
+		8.	sudo docker build uwsgi
+		9.	sudo docker tag <imagenameofuwsgi> tutum.co/arundas/uwsgi:uwsgi
+		10.	sudo docker push tutum.co/arundas/nginx:nginx
+		11.	sudo docker push tutum.co/arundas/postgres:postgres
+		12.	sudo docker push tutum.co/arundas/uwsgi:uwsgi
+		13.	Log in to your tutum account in tutum.co and go into your repositories pages.
+		
+				ISSUES
+		14. Your Services should be linked with one another. For this follow these steps:
+			1.	In your Service dashboard, select the container which needs to be linked.
+			2.	Press Edit ( Green Button )
+			3.	Check the configuration and press Next: environment variables button ( Blue Button ) in the lower left corner.
+			4.	Select Link Services and choose the service which you want to link and press Add
+			5.	Specify other parameters as required.
+			6.	Press Save.
+		
+				ISSUES
+		Services will choose the nodes according to the policy that you select while creating them. Should look in to ways in which we can deploy a service in a particular node.
+			
+				FIX
+		Use Deploy Tags. Say tag named ' host1 ' and ' host2 ' to specify which node to choose/consider while starting the service.
+			
+				PROBLEM
+		A tag should be written into the service, there is no option to choose between tags while starting a service. It is predetermined and should be saved by the user.
+		
+		
+		
+		
+		
+		
+		14. Start the postgres image, followed by uwsgi and then the nginx image
+		15.	
+		
+		
